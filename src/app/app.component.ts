@@ -6,8 +6,7 @@ import { Component } from '@angular/core';
   styleUrls: ['./app.component.scss']
 })
 export class AppComponent {
-  title = 'movies';
-  helloWorld() {
-    alert('Hello world!');
-  }
+
+  greeting: Promise<string>|null = null;
+
 }
