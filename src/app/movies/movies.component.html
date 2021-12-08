@@ -1,3 +1,2 @@
-<div>
-  {{test | async}}
-</div>
+<app-categories (categoryChanged)="onCategoryChanged($event)"></app-categories>
+<app-movies-table [$movies]="$movies" [selectedCategory]="selectedCategory"></app-movies-table>

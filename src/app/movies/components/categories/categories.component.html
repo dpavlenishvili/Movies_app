@@ -1,0 +1,12 @@
+<div *ngIf="$categories | async as categories">
+  <dx-menu
+    [dataSource]="categories"
+    [selectByClick]="true"
+    [focusStateEnabled]="false"
+    selectionMode="single"
+    [selectedItem]="selectedCategory"
+    orientation="vertical"
+    (onItemClick)="onItemClick($event)"
+    displayExpr="name">
+  </dx-menu>
+</div>

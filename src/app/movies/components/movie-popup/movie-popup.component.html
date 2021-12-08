@@ -1,0 +1,24 @@
+<dx-popup
+  [(visible)]="showPopup"
+  (visibleChange)="onClose($event)"
+  [closeOnOutsideClick]="true"
+  [dragEnabled]="false"
+  [showTitle]="true"
+  [title]="movie?.name + ' Actors'">
+  <div *dxTemplate="let data of 'content'">
+    <ng-container *ngIf="movie">
+      <dx-data-grid [dataSource]="movie.actors"
+                    [showBorders]="true">
+        <dxi-column caption="Name"
+                    dataField="name"
+                    dataType="string"></dxi-column>
+        <dxi-column caption="Age"
+                    dataField="age"
+                    dataType="number"></dxi-column>
+        <dxi-column caption="Gender"
+                    dataField="gender.type"
+                    dataType="string"></dxi-column>
+      </dx-data-grid>
+    </ng-container>
+  </div>
+</dx-popup>

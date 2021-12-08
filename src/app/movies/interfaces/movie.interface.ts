@@ -1,8 +1,9 @@
-export interface MovieInterface {
+export interface Movie {
+  id: number,
   name: string,
   category: Category,
-  length: string,
-  actors: string,
+  length: number,
+  actors: Array<Actor>,
 }
 
 export interface Actor {
@@ -12,7 +13,7 @@ export interface Actor {
 }
 
 export interface Category {
-  id: number, name: string
+  id: number, name: string, selected?: boolean
 }
 export interface Gender {
   id: number, type: string
