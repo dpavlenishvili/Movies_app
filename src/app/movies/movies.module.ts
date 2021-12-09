@@ -1,11 +1,11 @@
-import { NgModule } from '@angular/core';
-import { CommonModule } from '@angular/common';
-import { MoviesComponent } from './movies.component';
-import { MoviesTableComponent } from './components/movies-table/movies-table.component';
+import {NgModule} from '@angular/core';
+import {CommonModule} from '@angular/common';
+import {MoviesComponent} from './movies.component';
+import {MoviesTableComponent} from './components/movies-table/movies-table.component';
 import {DxDataGridModule, DxMenuModule, DxPopupModule} from "devextreme-angular";
 import {MoviesRoutingModule} from "./movies-routing.module";
-import { MoviePopupComponent } from './components/movie-popup/movie-popup.component';
-import { CategoriesComponent } from './components/categories/categories.component';
+import {MoviePopupComponent} from './components/movie-popup/movie-popup.component';
+import {CategoriesComponent} from './components/categories/categories.component';
 import {UtilsModule} from "../utils/utils.module";
 
 @NgModule({
@@ -24,4 +24,5 @@ import {UtilsModule} from "../utils/utils.module";
     UtilsModule
   ]
 })
-export class MoviesModule { }
+export class MoviesModule {
+}

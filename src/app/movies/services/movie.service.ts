@@ -1,4 +1,4 @@
-import { Injectable } from '@angular/core';
+import {Injectable} from '@angular/core';
 import {Observable, of} from "rxjs";
 import {Category, Movie} from "../interfaces/movie.interface";
 
@@ -397,13 +397,14 @@ const Movies: Array<Movie> = [
 })
 export class MovieService {
 
-  constructor() { }
+  constructor() {
+  }
 
-  getMovies(categoryId: number):Observable<Array<Movie>> {
+  getMovies(categoryId: number): Observable<Array<Movie>> {
     return of(Movies.filter(m => categoryId === -1 || m.category.id === categoryId))
   }
 
-  getCategories():Observable<Array<Category>> {
+  getCategories(): Observable<Array<Category>> {
     return of(Categories)
   }
 

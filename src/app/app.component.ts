@@ -1,5 +1,4 @@
-import { Component } from '@angular/core';
-import {HttpClient} from "@angular/common/http";
+import {Component} from '@angular/core';
 
 @Component({
   selector: 'app-root',
@@ -10,8 +9,9 @@ export class AppComponent {
 
   $categories: any;
 
-  constructor(
-  ) { }
+  constructor() {
+  }
+
   ngOnInit(): void {
 
   }

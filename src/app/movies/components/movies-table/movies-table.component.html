@@ -1,13 +1,13 @@
 <dx-data-grid
-  id="gridContainer"
+  (onRowClick)="onRowClick($event)"
   [dataSource]="movies$ | async"
   [showBorders]="true"
-  (onRowClick)="onRowClick($event)">
+  id="gridContainer">
   <dxo-paging [pageSize]="10"></dxo-paging>
   <dxo-pager
-    [showPageSizeSelector]="true"
     [allowedPageSizes]="[10, 20, 50, 100]"
-    [showInfo]="true">
+    [showInfo]="true"
+    [showPageSizeSelector]="true">
   </dxo-pager>
   <dxo-search-panel
     [highlightCaseSensitive]="true"
@@ -30,9 +30,9 @@
 
 <ng-container *ngIf="showMoviePopup">
   <app-movie-popup
-    [showPopup]="showMoviePopup"
+    (visibleChange)="showMoviePopup = $event"
     [movie]="selectedMovie"
-    (visibleChange)="showMoviePopup = $event">
+    [showPopup]="showMoviePopup">
   </app-movie-popup>
 </ng-container>
 

@@ -11,7 +11,8 @@ export class MoviePopupComponent implements OnInit {
   @Input() showPopup = false;
   @Output() visibleChange = new EventEmitter<boolean>()
 
-  constructor() { }
+  constructor() {
+  }
 
   ngOnInit(): void {
   }

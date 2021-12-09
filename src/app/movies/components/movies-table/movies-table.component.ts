@@ -1,6 +1,6 @@
-import {Component, Input, OnInit} from '@angular/core';
-import {BehaviorSubject, distinctUntilChanged, Observable, of, startWith, Subject, switchMap, tap} from 'rxjs';
-import {Category, Movie} from "../../interfaces/movie.interface";
+import {Component, Input} from '@angular/core';
+import {BehaviorSubject, distinctUntilChanged, Observable, switchMap} from 'rxjs';
+import {Movie} from "../../interfaces/movie.interface";
 import {MovieService} from "../../services/movie.service";
 
 @Component({
@@ -27,7 +27,7 @@ export class MoviesTableComponent {
     this.category$.next(categoryId)
   }
 
-  onRowClick({data}: {data: Movie }) {
+  onRowClick({data}: { data: Movie }) {
     this.selectedMovie = data;
     this.showMoviePopup = !this.showMoviePopup;
   }

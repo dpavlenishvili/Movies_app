@@ -1,5 +1,4 @@
-import { Component, OnInit } from '@angular/core';
-import {Category} from "./interfaces/movie.interface";
+import {Component} from '@angular/core';
 
 @Component({
   selector: 'app-movies',

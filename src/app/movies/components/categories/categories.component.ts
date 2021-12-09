@@ -1,5 +1,5 @@
-import {Component, EventEmitter, Input, OnInit, Output} from '@angular/core';
-import {map, Observable, of, tap} from "rxjs";
+import {Component, EventEmitter, Output} from '@angular/core';
+import {map, Observable} from "rxjs";
 import {Category} from "../../interfaces/movie.interface";
 import {MovieService} from "../../services/movie.service";
 
@@ -20,15 +20,15 @@ export class CategoriesComponent {
     this.$categories = this.movieService.getCategories().pipe(
       map(categories => [
         {
-         id: -1,
-         name: 'All',
+          id: -1,
+          name: 'All',
         },
         ...categories,
       ])
     );
   }
 
-  onItemClick({itemData}: {itemData: Category}): void {
+  onItemClick({itemData}: { itemData: Category }): void {
     this.onCategoryChange(itemData);
   }
 

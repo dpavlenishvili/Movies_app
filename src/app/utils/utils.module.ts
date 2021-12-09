@@ -1,5 +1,5 @@
-import { NgModule } from '@angular/core';
-import { CommonModule } from '@angular/common';
+import {NgModule} from '@angular/core';
+import {CommonModule} from '@angular/common';
 import {MinutesToHoursPipe} from "./pipes/length-calculator.pipe";
 
 @NgModule({
@@ -11,4 +11,5 @@ import {MinutesToHoursPipe} from "./pipes/length-calculator.pipe";
     MinutesToHoursPipe
   ]
 })
-export class UtilsModule { }
+export class UtilsModule {
+}

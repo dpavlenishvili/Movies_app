@@ -13,8 +13,12 @@ export interface Actor {
 }
 
 export interface Category {
-  id: number, name: string, selected?: boolean
+  id: number,
+  name: string,
+  selected?: boolean
 }
+
 export interface Gender {
-  id: number, type: string
+  id: number,
+  type: string
 }
