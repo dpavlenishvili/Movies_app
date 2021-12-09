@@ -1,5 +1,5 @@
 import {Component, EventEmitter, Input, OnInit, Output} from '@angular/core';
-import {Observable, of} from "rxjs";
+import {map, Observable, of, tap} from "rxjs";
 import {Category} from "../../interfaces/movie.interface";
 import {MovieService} from "../../services/movie.service";
 
@@ -8,21 +8,24 @@ import {MovieService} from "../../services/movie.service";
   templateUrl: './categories.component.html',
   styleUrls: ['./categories.component.scss']
 })
-export class CategoriesComponent implements OnInit {
-  selectedCategory: Category = {
-    id: 0,
-    name: 'All',
-    selected: true
-  };
-  @Output() categoryChanged: EventEmitter<Category> = new EventEmitter<Category>();
-  $categories!: Observable<Array<Category>>
+export class CategoriesComponent {
+  @Output() categoryChanged = new EventEmitter<number>();
+
+  selectedCategoryId = -1;
+  $categories: Observable<Array<Category>>;
 
   constructor(
     private movieService: MovieService
-  ) { }
-
-  ngOnInit(): void {
-    this.$categories = this.movieService.getCategories()
+  ) {
+    this.$categories = this.movieService.getCategories().pipe(
+      map(categories => [
+        {
+         id: -1,
+         name: 'All',
+        },
+        ...categories,
+      ])
+    );
   }
 
   onItemClick({itemData}: {itemData: Category}): void {
@@ -30,7 +33,11 @@ export class CategoriesComponent implements OnInit {
   }
 
   onCategoryChange(category: Category): void {
-    this.selectedCategory = category;
-    this.categoryChanged.emit(this.selectedCategory);
+    this.selectedCategoryId = category.id;
+    this.categoryChanged.emit(this.selectedCategoryId);
+  }
+
+  isCategorySelected = (category: Category) => {
+    return category.id === this.selectedCategoryId
   }
 }

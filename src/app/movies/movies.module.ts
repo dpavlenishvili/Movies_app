@@ -4,9 +4,9 @@ import { MoviesComponent } from './movies.component';
 import { MoviesTableComponent } from './components/movies-table/movies-table.component';
 import {DxDataGridModule, DxMenuModule, DxPopupModule} from "devextreme-angular";
 import {MoviesRoutingModule} from "./movies-routing.module";
-import {SharedModule} from "../shared/shared.module";
 import { MoviePopupComponent } from './components/movie-popup/movie-popup.component';
 import { CategoriesComponent } from './components/categories/categories.component';
+import {UtilsModule} from "../utils/utils.module";
 
 @NgModule({
   declarations: [
@@ -19,9 +19,9 @@ import { CategoriesComponent } from './components/categories/categories.componen
     CommonModule,
     DxDataGridModule,
     MoviesRoutingModule,
-    SharedModule,
     DxPopupModule,
-    DxMenuModule
+    DxMenuModule,
+    UtilsModule
   ]
 })
 export class MoviesModule { }

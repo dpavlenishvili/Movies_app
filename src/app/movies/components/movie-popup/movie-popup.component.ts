@@ -7,9 +7,9 @@ import {Movie} from "../../interfaces/movie.interface";
   styleUrls: ['./movie-popup.component.scss']
 })
 export class MoviePopupComponent implements OnInit {
-  @Input() movie!: Movie;
-  @Input() showPopup: boolean = false;
-  @Output() visibleChange: EventEmitter<boolean> = new EventEmitter<boolean>()
+  @Input() movie: Movie | undefined;
+  @Input() showPopup = false;
+  @Output() visibleChange = new EventEmitter<boolean>()
 
   constructor() { }
 

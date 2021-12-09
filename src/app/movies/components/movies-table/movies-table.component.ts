@@ -1,5 +1,5 @@
 import {Component, Input, OnInit} from '@angular/core';
-import {Observable, of, startWith} from 'rxjs';
+import {BehaviorSubject, distinctUntilChanged, Observable, of, startWith, Subject, switchMap, tap} from 'rxjs';
 import {Category, Movie} from "../../interfaces/movie.interface";
 import {MovieService} from "../../services/movie.service";
 
@@ -8,16 +8,23 @@ import {MovieService} from "../../services/movie.service";
   templateUrl: './movies-table.component.html',
   styleUrls: ['./movies-table.component.scss']
 })
-export class MoviesTableComponent implements OnInit {
-  @Input() $movies!: Observable<Array<Movie>>;
-  @Input() selectedCategory!: Category;
+export class MoviesTableComponent {
+  movies$: Observable<Movie[] | any>;
+  category$ = new BehaviorSubject<number>(-1);
 
-  selectedMovie!: Movie;
+  selectedMovie: Movie | undefined;
   showMoviePopup: boolean = false;
 
-  constructor() { }
+  constructor(private movieService: MovieService) {
+    this.movies$ = this.category$.pipe(
+      distinctUntilChanged(),
+      switchMap(category => this.movieService.getMovies(category)),
+    );
+  }
 
-  ngOnInit(): void {
+  @Input()
+  set categoryId(categoryId: number) {
+    this.category$.next(categoryId)
   }
 
   onRowClick({data}: {data: Movie }) {

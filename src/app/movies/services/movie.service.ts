@@ -4,10 +4,6 @@ import {Category, Movie} from "../interfaces/movie.interface";
 
 const Categories = [
   {
-    id: 0,
-    name: 'All'
-  },
-  {
     id: 1,
     name: 'Adventure'
   },
@@ -403,8 +399,8 @@ export class MovieService {
 
   constructor() { }
 
-  getMovies(category: Category):Observable<Array<Movie>> {
-    return of(Movies.filter(m => category.id === 0 ||  m.category.id === category.id))
+  getMovies(categoryId: number):Observable<Array<Movie>> {
+    return of(Movies.filter(m => categoryId === -1 || m.category.id === categoryId))
   }
 
   getCategories():Observable<Array<Category>> {
